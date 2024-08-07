@@ -16,7 +16,7 @@ const Slider = () => {
       setIndex(prevIndex => (prevIndex < byDateDesc.length - 1 ? prevIndex + 1 : 0));
     }, 5000);
 
-    return () => clearInterval(intervalId); // Clean up the interval on unmount
+    return () => clearInterval(intervalId); 
   });
   return (
     <div className="SlideCardList">

@@ -8,23 +8,23 @@ const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 500)
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
-  const [success, setSuccess] = useState(false);  // Ajouter un état pour le succès
-  const [error, setError] = useState(null); // Ajouter un état pour les erreurs
+  const [success, setSuccess] = useState(false);  
+  const [error, setError] = useState(null); 
 
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
       setSending(true);
-      setError(null);  // Réinitialiser l'erreur avant l'envoi
+      setError(null);  
       try {
         await mockContactApi();
-        setSuccess(true); // Définir le succès après la réponse de l'API
+        setSuccess(true); 
         setSending(false);
-        onSuccess(); // Appeler la fonction onSuccess
+        onSuccess(); 
       } catch (err) {
-        setError("Une erreur est survenue, veuillez réessayer."); // Définir un message d'erreur
+        setError("Une erreur est survenue, veuillez réessayer."); 
         setSending(false);
-        onError(err); // Appeler la fonction onError
+        onError(err); 
       }
     },
     [onSuccess, onError]
